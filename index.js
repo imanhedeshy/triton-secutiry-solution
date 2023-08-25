@@ -95,8 +95,7 @@ app.post("/api/login", async (req, res) => {
     const user = await database("users").where({ email }).first();
     if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-    // Compare passwords]
-    
+    // Compare passwords    
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword)
       return res.status(401).json({ error: "Invalid credentials" });
