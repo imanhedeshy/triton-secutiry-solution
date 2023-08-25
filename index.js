@@ -5,15 +5,18 @@ const jwt = require("jsonwebtoken");
 const knex = require("knex");
 const speakeasy = require("speakeasy");
 const dbConfig = require("./knexfile");
+const OAuth2Server = require("oauth2-server");
+const Request = OAuth2Server.Request;
+const Response = OAuth2Server.Response;
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const database = knex(dbConfig.development);
 
 app.use(bodyParser.json());
 
-const JWT_SECRET = "v8G7g9AZQu44tam9G565eISJ3pn3T-H6tTODAvviSgA";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware for verifying JWT
 function verifyJWT(req, res, next) {
@@ -95,7 +98,7 @@ app.post("/api/login", async (req, res) => {
     const user = await database("users").where({ email }).first();
     if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-    // Compare passwords    
+    // Compare passwords
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword)
       return res.status(401).json({ error: "Invalid credentials" });
@@ -269,6 +272,49 @@ app.delete("/api/platforms/:id", verifyJWT, async (req, res) => {
     res.json({ message: "Platform deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: "An error occurred" });
+  }
+});
+
+// OAuth 2.0 Authorization Server
+const oauth2 = new OAuth2Server({
+  model: require("./oauth2-model"), // Your OAuth2 model implementation
+  allowBearerTokensInQueryString: true,
+});
+
+// OAuth 2.0 Authorization Endpoint
+app.get("/oauth/authorize", async (req, res) => {
+  const request = new Request(req);
+  const response = new Response(res);
+
+  try {
+    const platform_id = req.query.platform_id;
+    const redirect_uri = req.query.redirect_uri;
+    const response_type = req.query.response_type;
+
+    // Create an OAuth 2.0 authorization request
+    const authRequest = await oauth2.authorize(request, response, {
+      authenticateHandler: {
+        handle: () => ({ id: platform_id }),
+      },
+    });
+
+    // Redirect the user to the consent screen
+    res.redirect(authRequest.url);
+  } catch (error) {
+    res.status(error.status || 500).json(error);
+  }
+});
+
+// OAuth 2.0 Token Endpoint
+app.post("/oauth/token", async (req, res) => {
+  const request = new Request(req);
+  const response = new Response(res);
+
+  try {
+    const token = await oauth2.token(request, response);
+    res.json(token);
+  } catch (error) {
+    res.status(error.status || 500).json(error);
   }
 });
 
