@@ -16,7 +16,7 @@ To access authenticated endpoints, include a valid JWT token in the `Authorizati
 
 Register a new user.
 
-- **Endpoint:** POST `/register`
+- **Endpoint:** POST `/api/register`
 - **Input:**
 {
   "name": "Alice Smith",
@@ -37,7 +37,7 @@ Register a new user.
 ### 2. User Login
 Authenticate a user and retrieve a JWT token.
 
-- **Endpoint:** POST `/login`
+- **Endpoint:** POST `/api/login`
 - **Input:**
 {
   "email": "alice@example.com",
@@ -54,7 +54,7 @@ Authenticate a user and retrieve a JWT token.
 ### 3. Fetch All Tiers
 Get a list of all available tiers.
 
-- **Endpoint:** GET `/tiers`
+- **Endpoint:** GET `/api/tiers`
 - **Output:**
 [
   {
@@ -69,7 +69,7 @@ Get a list of all available tiers.
 ### 4. Create New Tier
 Create a new tier.
 
-- **Endpoint:** POST `/tiers`
+- **Endpoint:** POST `/api/tiers`
 - **Input:**
 {
   "tier": "Tier 3",
@@ -85,7 +85,7 @@ Create a new tier.
 ### 5. Edit Tier
 Edit an existing tier.
 
-- **Endpoint:** PUT `/tiers/:id`
+- **Endpoint:** PUT `/api/tiers/:id`
 - **Input:**
 {
   "tier": "Tier 3 (Updated)",
@@ -101,7 +101,7 @@ Edit an existing tier.
 ### 6. Fetch All Users
 Get a list of all registered users.
 
-- **Endpoint:** GET `/users`
+- **Endpoint:** GET `/api/users`
 - **Output:**
 [
   {
@@ -116,7 +116,7 @@ Get a list of all registered users.
 ### 7. Edit User
 Edit user information.
 
-- **Endpoint:** PUT `/users/:id`
+- **Endpoint:** PUT `/api/users/:id`
 - **Input:**
 {
   "name": "Alice Johnson",
@@ -131,7 +131,7 @@ Edit user information.
 ### 8. Fetch Current User
 Get information about the authenticated user.
 
-- **Endpoint:** GET `/me`
+- **Endpoint:** GET `/api/me`
 - **Output:**
 {
   "id": 1,
@@ -143,7 +143,7 @@ Get information about the authenticated user.
 ### 9. Fetch All Platforms
 Get a list of all available platforms.
 
-- **Endpoint:** GET `/platforms`
+- **Endpoint:** GET `/api/platforms`
 - **Output:**
 [
   {
@@ -157,7 +157,7 @@ Get a list of all available platforms.
 ### 10. Fetch Platform by ID
 Get details about a specific platform.
 
-- **Endpoint:** GET `/platforms/:id`
+- **Endpoint:** GET `/api/platforms/:id`
 - **Output:**
 {
   "id": 1,
@@ -168,7 +168,7 @@ Get details about a specific platform.
 ### 11. Create New Platform
 Create a new platform.
 
-- **Endpoint:** POST `/platforms`
+- **Endpoint:** POST `/api/platforms`
 - **Input:**
 {
   "name": "myplatform",
@@ -183,7 +183,7 @@ Create a new platform.
 ### 12. Edit Platform
 Edit an existing platform.
 
-- **Endpoint:** PUT `/platforms/:id`
+- **Endpoint:** PUT `/api/platforms/:id`
 - **Input:**
 {
   "name": "myplatform (Updated)",
@@ -198,7 +198,7 @@ Edit an existing platform.
 ### 13. Delete Platform
 Delete a platform.
 
-- **Endpoint:** DELETE `/platforms/:id`
+- **Endpoint:** DELETE `/api/platforms/:id`
 - **Output:**
 {
   "message": "Platform deleted successfully"

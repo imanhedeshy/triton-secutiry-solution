@@ -14,6 +14,8 @@ exports.seed = function (knex) {
             "Date of Birth",
             "Social Security Number",
           ]),
+          secret: "your-secret-key-1",
+          redirectUri: "your-redirect-uri-1",
         },
         {
           name: "xbox",
@@ -26,6 +28,8 @@ exports.seed = function (knex) {
             "Date of Birth",
             "Social Security Number",
           ]),
+          secret: "your-secret-key-2",
+          redirectUri: "your-redirect-uri-2",
         },
         {
           name: "instagram",
@@ -36,6 +40,8 @@ exports.seed = function (knex) {
             "Address",
             "Date of Birth",
           ]),
+          secret: "your-secret-key-3",
+          redirectUri: "your-redirect-uri-3",
         },
         {
           name: "twitter",
@@ -46,6 +52,8 @@ exports.seed = function (knex) {
             "Address",
             "Date of Birth",
           ]),
+          secret: "your-secret-key-4",
+          redirectUri: "your-redirect-uri-4",
         },
         {
           name: "gmail",
@@ -66,6 +74,8 @@ exports.seed = function (knex) {
             "Credit/Debit Card Details",
             "Social Security Number",
           ]),
+          secret: "your-secret-key-5",
+          redirectUri: "your-redirect-uri-5",
         },
         {
           name: "linkedin",
@@ -78,6 +88,8 @@ exports.seed = function (knex) {
             "Credit/Debit Card Details",
             "Social Security Number",
           ]),
+          secret: "your-secret-key-6",
+          redirectUri: "your-redirect-uri-6",
         },
       ]);
     });
