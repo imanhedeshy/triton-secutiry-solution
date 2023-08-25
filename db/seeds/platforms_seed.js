@@ -58,10 +58,14 @@ exports.seed = function (knex) {
         {
           name: "gmail",
           info_access: JSON.stringify(["Name", "Phone Number"]),
+          secret: "your-secret-key-5",
+          redirectUri: "your-redirect-uri-5",
         },
         {
           name: "facebook",
           info_access: JSON.stringify(["Name", "Phone Number"]),
+          secret: "your-secret-key-6",
+          redirectUri: "your-redirect-uri-6",
         },
         {
           name: "amazon",
@@ -74,8 +78,8 @@ exports.seed = function (knex) {
             "Credit/Debit Card Details",
             "Social Security Number",
           ]),
-          secret: "your-secret-key-5",
-          redirectUri: "your-redirect-uri-5",
+          secret: "your-secret-key-7",
+          redirectUri: "your-redirect-uri-7",
         },
         {
           name: "linkedin",
@@ -88,8 +92,8 @@ exports.seed = function (knex) {
             "Credit/Debit Card Details",
             "Social Security Number",
           ]),
-          secret: "your-secret-key-6",
-          redirectUri: "your-redirect-uri-6",
+          secret: "your-secret-key-8",
+          redirectUri: "your-redirect-uri-8",
         },
       ]);
     });
